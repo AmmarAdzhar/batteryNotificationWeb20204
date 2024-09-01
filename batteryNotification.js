@@ -10,14 +10,14 @@ const app = express();
 app.use(bodyParser.json());
 
 app.post('/batteryNotification', (req, res) => {
-    const registrationToken = "f2VoLxguR668dmMfKOg55e:APA91bE6Co6vx6qFsXcWko1fqhUHPY5lTkx1aSHv__MOvKaJoqLRxo-raMzyJrA3N-PNPSfI68Fq6MzxHsevKj2wKApPNNJp7yhqCdIJjryhxipp8an-O_5xYN0yhOQF7wuP1NnGMq-m";
+    const registrationToken = req.body.token;
     const message = {
         notification: {
             title: 'Battery Notification',
             body: 'Battery level is above 20%',
         },
         token: registrationToken,
-        priority: "high"
+        priority: 'high'
     };
 
     admin.messaging().send(message)
