@@ -9,6 +9,11 @@ admin.initializeApp({
 const app = express();
 app.use(bodyParser.json());
 
+// Define a route for root URL
+app.get('/', (req, res) => {
+    res.send('Welcome to the Battery Notification Service');
+});
+
 app.post('/batteryNotification', (req, res) => {
     const registrationToken = req.body.token;
     const message = {
